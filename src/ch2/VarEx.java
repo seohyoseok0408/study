@@ -13,5 +13,7 @@ public class VarEx {
         System.out.println(score);
         System.out.println(score2);
         System.out.println(score3);
+
+
     }
 }
