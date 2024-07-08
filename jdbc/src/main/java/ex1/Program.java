@@ -6,7 +6,7 @@ public class Program {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
         String url = "jdbc:oracle:thin:@192.168.219.106:1521/ORCLPDB";
-        String sql = "SELECT * FROM NOTICE";
+        String sql = "SELECT * FROM NOTICE WHERE HIT > 9";
 
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection(url, "NEWLEC", "newlec");
