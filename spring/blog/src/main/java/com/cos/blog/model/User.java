@@ -25,7 +25,7 @@ public class User {
 	@GeneratedValue(strategy =  GenerationType.IDENTITY) // 프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
 	private int id; // auto_increment 전략
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 30, unique = true)
 	private String username;
 	
 	@Column(nullable = false, length = 100) // 해쉬로 변경하기에 넉넉하게
@@ -34,13 +34,9 @@ public class User {
 	@Column(nullable = false, length = 50)
 	private String email;
 	
-	@ColumnDefault("'user'")
-	private String role; // Enum을 쓰는게 좋다.
-	// Enum을 쓰면 기본적으로 도메인을 만들어 줄 수 있음
-	// admin, user, manage
-	// 위처럼 중요한 권한을 스트링으로 주면 위험할 수 있음
-	// 그래서 위 3개 중 하나만 들어갈 수 있도록 도메인을 줄 수 있다. 범
+	@Enumerated(EnumType.STRING) // DB는 RoleType이란게 없으니 String 이라고 알리기
+	private RoleType role; 
 	
-	@CreationTimestamp // 시간이 자동 입력
+	@CreationTimestamp 
 	private Timestamp createDate;
 }
