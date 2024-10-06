@@ -41,7 +41,7 @@ public class SecurityConfig{ // 2. extends 제거
 		
 		// 3. 로그인 처리 프로세스 설정
 		http.formLogin(f -> f.loginPage("/auth/loginForm")
-				.loginProcessingUrl("/auth/loginProc")
+				.loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인
 				.defaultSuccessUrl("/")
 		);
 
