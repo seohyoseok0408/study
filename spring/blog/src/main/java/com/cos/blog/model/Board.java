@@ -37,9 +37,8 @@ public class Board {
 	private String title;
 	
 	@Lob
-	private String content; 
+	private String content; // Summer Note 라이브러리 -> <html>태그가 섞여서 디자인 됨
 	
-	@ColumnDefault("0")
 	private int count;
 	
 	@ManyToOne(fetch = FetchType.EAGER) 
@@ -49,7 +48,7 @@ public class Board {
 	// 그럼 서로 충돌이 남.그래서 자바가 DB에 맞춰서 키값을 저장하게 되는건데
 	// ORM 을 사용하면 키값,포린키로 찾는게 아니라 그냥 오브젝트 넣으면 된다.
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy 연관관계의 주인이 아님 (FK아님) DB에 X
 	private List<Reply> reply;
 	
 	@CreationTimestamp
